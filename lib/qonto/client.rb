@@ -1,6 +1,5 @@
 require 'httparty'
-require 'qonto/actions/organization'
-require 'qonto/actions/transactions'
+require 'qonto/actions'
 require 'qonto/error'
 require 'qonto/model'
 require 'qonto/response'
