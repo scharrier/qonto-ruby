@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/qonto-api-ruby
+    docker:
+      - image: circleci/ruby:2.4.1-node
+    steps:
+      - checkout
+
+      - type: cache-restore
+        name: Restore bundle cache
+        keys:
+          - bump-bundle-{{ checksum "qonto-api.gemspec" }}
+          # fallback to using the latest cache if no exact match is found
+          - bump-bundle-
+
+      - run:
+          name: Bundle Install
+          command: bundle install --path vendor/bundle
+
+      - type: cache-save
+        name: Store bundle cache
+        key: bump-bundle-{{ checksum "qonto-api.gemspec" }}
+        paths:
+          - vendor/bundle
+
+      - run:
+          name: Run tests
+          command: bundle exec rspec
