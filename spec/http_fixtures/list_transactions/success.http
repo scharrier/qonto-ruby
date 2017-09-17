@@ -1,0 +1,19 @@
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8
+
+{
+  "transactions": [
+    {
+      "amount": 0.42,
+      "amount_cents": 42,
+      "local_amount": 0,
+      "local_amount_cents": 0,
+      "side": "debit",
+      "operation_type": "qonto_fee",
+      "currency": "EUR",
+      "local_currency": "EUR",
+      "label": "Qonto",
+      "settled_at": "2017-09-11T08:38:37.000Z"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+HTTP/1.1 200
+Content-Type: application/json; charset=utf-8
+
+{
+  "organization": {
+    "slug": "it-ducks-123",
+    "bank_accounts": [
+      {
+        "slug": "it-ducks-123-bank-account-1",
+        "iban": "FR7600000000001111111111111",
+        "bic": "TRZOFRXXXXX",
+        "currency": "EUR",
+        "balance": 42000.00,
+        "balance_cents": 4200000
+      }
+    ]
+  }
+}
