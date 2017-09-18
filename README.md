@@ -9,7 +9,7 @@ This project is not affiliated with the Qonto company in any way.
 
 Add this line to your application's Gemfile:
 
-    gem 'qonto-api'
+    gem 'qonto'
 
 And then execute:
 
@@ -17,7 +17,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install qonto-api
+    $ gem install qonto
 
 ## Requirements
 
