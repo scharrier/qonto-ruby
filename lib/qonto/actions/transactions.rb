@@ -16,7 +16,7 @@ module Qonto
           iban: bank_account.iban,
           current_page: current_page,
           per_page: per_page
-        }.compact
+        }.delete_if { |key, value| value.nil? }
          .map { |(key, value)| "#{key}=#{value}" }
          .join('&')
        end
