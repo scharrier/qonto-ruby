@@ -12,8 +12,9 @@ module Qonto
     BASE_URL = 'https://thirdparty.qonto.eu/v'.freeze
     USER_AGENT = "qonto-api-ruby/#{VERSION}".freeze
 
-    def initialize(options = {})
-      @configuration = Qonto::Configuration.new(options)
+    def initialize(slug:, secret_key:)
+      @slug = slug
+      @secret_key = secret_key
     end
 
     def base_url
@@ -26,7 +27,7 @@ module Qonto
 
     private
 
-    attr_reader :configuration
+    attr_reader :slug, :secret_key
 
     def execute(method, path)
       begin
@@ -62,14 +63,10 @@ module Qonto
         format: :json,
         headers: {
           'Accept' => 'application/json',
-          'Authorization' => authorization,
+          'Authorization' => "#{slug}:#{secret_key}",
           'User-Agent' => USER_AGENT
         }
       }
-    end
-
-    def authorization
-      "#{configuration.get(:slug)}:#{configuration.get(:secret_key)}"
     end
   end
 end

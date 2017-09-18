@@ -21,7 +21,7 @@ describe Qonto::Client do
     it 'handles errors correctly and raise a custom error' do
       stub_request(:get, /unauthorized/)
         .to_return(read_http_fixture('unauthorized.http'))
-      client = described_class.new
+      client = described_class.new(slug: 'it-ducks', secret_key: '123')
 
       expect do
         client.get('/unauthorized')
@@ -36,7 +36,7 @@ describe Qonto::Client do
     end
 
     it 'builds the correct request' do
-      client = described_class.new(slug: 'it-ducks')
+      client = described_class.new(slug: 'it-ducks', secret_key: '123')
 
       client.get_organization
 
@@ -47,7 +47,7 @@ describe Qonto::Client do
     end
 
     it 'returns the correct response' do
-      client = described_class.new
+      client = described_class.new(slug: 'it-ducks', secret_key: '123')
 
       response = client.get_organization
 
@@ -63,7 +63,7 @@ describe Qonto::Client do
     end
 
     it 'builds the request with slug and iban' do
-      client = described_class.new
+      client = described_class.new(slug: 'it-ducks', secret_key: '123')
       account = Qonto::Model::BankAccount.new(slug: 'my-account', iban: '123456')
       client.list_transactions(bank_account: account)
 
@@ -74,7 +74,7 @@ describe Qonto::Client do
     end
 
     it 'handles the paginate parameters' do
-      client = described_class.new
+      client = described_class.new(slug: 'it-ducks', secret_key: '123')
       account = Qonto::Model::BankAccount.new(slug: 'my-account', iban: '123456')
       client.list_transactions(bank_account: account, current_page: 2, per_page: 5)
 
@@ -85,7 +85,7 @@ describe Qonto::Client do
     end
 
     it 'returns the correct response' do
-      client = described_class.new
+      client = described_class.new(slug: 'it-ducks', secret_key: '123')
 
       account = Qonto::Model::BankAccount.new(slug: 'my-account', iban: '123456')
       response = client.list_transactions(bank_account: account)

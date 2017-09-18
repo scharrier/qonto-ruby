@@ -2,7 +2,7 @@ module Qonto
   module Actions
     module Organization
       def get_organization
-        response = get("/organizations/#{configuration.get(:slug)}")
+        response = get("/organizations/#{slug}")
         modelize_organization(response.parsed_response['organization'])
       end
 
