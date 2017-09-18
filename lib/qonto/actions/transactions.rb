@@ -5,7 +5,7 @@ module Qonto
         query = prepare_query_string(bank_account, current_page, per_page)
         response = get("/transactions?#{query}")
 
-        Qonto::Response.new(response, modelize_transactions(response.parsed_response['transactions']))
+        modelize_transactions(response.parsed_response['transactions'])
       end
 
       private

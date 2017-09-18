@@ -2,7 +2,6 @@ require 'httparty'
 require 'qonto/actions'
 require 'qonto/error'
 require 'qonto/model'
-require 'qonto/response'
 
 module Qonto
   class Client

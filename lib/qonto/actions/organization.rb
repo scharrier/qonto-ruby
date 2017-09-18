@@ -3,7 +3,7 @@ module Qonto
     module Organization
       def get_organization
         response = get("/organizations/#{configuration.get(:slug)}")
-        Qonto::Response.new(response, modelize_organization(response.parsed_response['organization']))
+        modelize_organization(response.parsed_response['organization'])
       end
 
       private

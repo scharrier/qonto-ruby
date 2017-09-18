@@ -51,9 +51,8 @@ describe Qonto::Client do
 
       response = client.get_organization
 
-      expect(response).to be_a(Qonto::Response)
-      expect(response.data).to be_a(Qonto::Model::Organization)
-      expect(response.data.bank_accounts.first).to be_a(Qonto::Model::BankAccount)
+      expect(response).to be_a(Qonto::Model::Organization)
+      expect(response.bank_accounts.first).to be_a(Qonto::Model::BankAccount)
     end
   end
 
@@ -91,8 +90,7 @@ describe Qonto::Client do
       account = Qonto::Model::BankAccount.new(slug: 'my-account', iban: '123456')
       response = client.list_transactions(bank_account: account)
 
-      expect(response).to be_a(Qonto::Response)
-      expect(response.data.first).to be_a(Qonto::Model::Transaction)
+      expect(response.first).to be_a(Qonto::Model::Transaction)
     end
   end
 end
