@@ -44,7 +44,7 @@ workflows:
   version: 2
   build:
     jobs:
-      - "build-latest"
-      - "build-2-3"
-      - "build-2-2"
-      - "build-2-1"
+      - build-latest
+      - build-2-3
+      - build-2-2
+      - build-2-1
