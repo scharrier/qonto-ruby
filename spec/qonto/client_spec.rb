@@ -8,12 +8,14 @@ describe Qonto::Client do
 
       client.get('/success')
 
-      expect(WebMock).to have_requested(:get, 'https://thirdparty.qonto.eu/v1/success')
-        .with(headers: {
-          'Accept' => 'application/json',
-          'Authorization' => 'it-ducks:123',
-          'User-Agent' => "qonto-api-ruby/#{Qonto::VERSION}"
-        })
+      expect(WebMock).to have_requested(
+        :get,
+        'https://thirdparty.qonto.eu/v1/success'
+      ).with(headers: {
+        'Accept' => 'application/json',
+        'Authorization' => 'it-ducks:123',
+        'User-Agent' => "qonto-api-ruby/#{Qonto::VERSION}"
+      })
     end
 
     it 'handles errors correctly and raise a custom error' do
@@ -38,7 +40,10 @@ describe Qonto::Client do
 
       client.get_organization
 
-      expect(WebMock).to have_requested(:get, 'https://thirdparty.qonto.eu/v1/organizations/it-ducks')
+      expect(WebMock).to have_requested(
+        :get,
+        'https://thirdparty.qonto.eu/v1/organizations/it-ducks'
+      )
     end
 
     it 'returns the correct response' do
@@ -58,12 +63,26 @@ describe Qonto::Client do
         .to_return(read_http_fixture('list_transactions/success.http'))
     end
 
-    it 'builds the correct request' do
+    it 'builds the request with slug and iban' do
       client = described_class.new
       account = Qonto::Model::BankAccount.new(slug: 'my-account', iban: '123456')
       client.list_transactions(bank_account: account)
 
-      expect(WebMock).to have_requested(:get, 'https://thirdparty.qonto.eu/v1/transactions?iban=123456&slug=my-account')
+      expect(WebMock).to have_requested(
+        :get,
+        'https://thirdparty.qonto.eu/v1/transactions?iban=123456&slug=my-account'
+      )
+    end
+
+    it 'handles the paginate parameters' do
+      client = described_class.new
+      account = Qonto::Model::BankAccount.new(slug: 'my-account', iban: '123456')
+      client.list_transactions(bank_account: account, current_page: 2, per_page: 5)
+
+      expect(WebMock).to have_requested(
+        :get,
+        'https://thirdparty.qonto.eu/v1/transactions?iban=123456&slug=my-account&current_page=2&per_page=5'
+      )
     end
 
     it 'returns the correct response' do
