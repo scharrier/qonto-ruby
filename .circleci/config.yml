@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build-latest: &common-build
     working_directory: ~/qonto-api-ruby
     docker:
       - image: circleci/ruby:2.4.1-node
@@ -27,3 +27,24 @@ jobs:
       - run:
           name: Run tests
           command: bundle exec rspec
+  build-2-3:
+    <<: *common-build
+    docker:
+      - image: circleci/ruby:2.3.4-node
+  build-2-2:
+    <<: *common-build
+    docker:
+      - image: circleci/ruby:2.2.7-node
+  build-2-1:
+    <<: *common-build
+    docker:
+      - image: circleci/ruby:2.1.10-node
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - "build-latest"
+      - "build-2-3"
+      - "build-2-2"
+      - "build-2-1"
