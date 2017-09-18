@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.version  = Qonto::VERSION
   spec.authors  = ['Sébastien Charrier']
   spec.email    = ['scharrier@gmail.com']
+  spec.licenses = ['MIT']
 
   spec.summary  = 'A Ruby client for the Qonto Api.'
   spec.homepage = 'https://github.com/scharrier/qonto-ruby'
@@ -16,9 +17,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.1.0'
 
-  spec.add_dependency 'httparty'
+  spec.add_runtime_dependency 'httparty', '~> 0'
 
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'webmock'
+  spec.add_development_dependency 'rake', '~> 12'
+  spec.add_development_dependency 'rspec', '~> 3'
+  spec.add_development_dependency 'webmock', '~> 3'
 end
