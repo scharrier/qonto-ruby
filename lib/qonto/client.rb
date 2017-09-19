@@ -8,8 +8,8 @@ module Qonto
     include Qonto::Actions::Organization
     include Qonto::Actions::Transactions
 
-    API_VERSION = '1'.freeze
-    BASE_URL = 'https://thirdparty.qonto.eu/v'.freeze
+    API_VERSION = 'v1'.freeze
+    BASE_URL = 'https://thirdparty.qonto.eu/'.freeze
     USER_AGENT = "qonto-ruby/#{VERSION}".freeze
 
     def initialize(slug:, secret_key:)
