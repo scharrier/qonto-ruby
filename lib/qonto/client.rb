@@ -10,7 +10,7 @@ module Qonto
 
     API_VERSION = '1'.freeze
     BASE_URL = 'https://thirdparty.qonto.eu/v'.freeze
-    USER_AGENT = "qonto-api-ruby/#{VERSION}".freeze
+    USER_AGENT = "qonto-ruby/#{VERSION}".freeze
 
     def initialize(slug:, secret_key:)
       @slug = slug

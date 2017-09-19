@@ -14,7 +14,7 @@ describe Qonto::Client do
       ).with(headers: {
         'Accept' => 'application/json',
         'Authorization' => 'it-ducks:123',
-        'User-Agent' => "qonto-api-ruby/#{Qonto::VERSION}"
+        'User-Agent' => "qonto-ruby/#{Qonto::VERSION}"
       })
     end
 
