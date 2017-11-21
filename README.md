@@ -1,7 +1,7 @@
 # Qonto API Ruby Client
 
 The Qonto API Ruby client provides convenient access to the Qonto API from applications written in Ruby language.
-It is currently up to date with the `v1` version. Qonto API documentation is avaible at https://api-doc.qonto.eu.
+It is currently up to date with the `v2` version. Qonto API documentation is avaible at https://api-doc.qonto.eu.
 
 This project is not affiliated with the Qonto company in any way.
 
@@ -44,15 +44,16 @@ You can retrieve your organization bank accounts by calling `get_organization`:
 
 You can list transactions for a given bank account by calling `list_transactions`:
 
-    # Paginate through the transactions
+    # Paginate through the pending transactions
     transactions = client.list_transactions(
       bank_account: bank_account,
       per_page: 10,
-      current_page: 2
+      current_page: 2,
+      status: ['pending']
     )
 
     transactions.each do |transaction|
-      puts " #{transaction.side}: #{transaction.amount} #{transaction.currency} - #{transaction.label}"
+      puts " #{transaction.side} (#{transaction.status}): #{transaction.amount} #{transaction.currency} - #{transaction.label}"
     end
 
 If a request returns an error, the client raises a `Qonto::Error`. This can be simply
