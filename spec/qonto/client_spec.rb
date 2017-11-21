@@ -84,6 +84,17 @@ describe Qonto::Client do
       )
     end
 
+    it 'handles the status parameter' do
+      client = described_class.new(slug: 'it-ducks', secret_key: '123')
+      account = Qonto::Model::BankAccount.new(slug: 'my-account', iban: '123456')
+      client.list_transactions(bank_account: account, status: ['pending', 'completed'])
+
+      expect(WebMock).to have_requested(
+        :get,
+        'https://thirdparty.qonto.eu/v2/transactions?iban=123456&slug=my-account&status[]=pending&status[]=completed'
+      )
+    end
+
     it 'returns the correct response' do
       client = described_class.new(slug: 'it-ducks', secret_key: '123')
 

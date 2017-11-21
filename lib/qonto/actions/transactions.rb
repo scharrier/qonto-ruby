@@ -1,8 +1,8 @@
 module Qonto
   module Actions
     module Transactions
-      def list_transactions(bank_account:, current_page: nil, per_page: nil)
-        query = prepare_query(bank_account, current_page, per_page)
+      def list_transactions(bank_account:, status: nil, current_page: nil, per_page: nil)
+        query = prepare_query(bank_account, status, current_page, per_page)
 
         response = get("/transactions", query: query)
 
@@ -11,10 +11,11 @@ module Qonto
 
       private
 
-      def prepare_query(bank_account, current_page, per_page)
+      def prepare_query(bank_account, status, current_page, per_page)
         {
           slug: bank_account.slug,
           iban: bank_account.iban,
+          status: status,
           current_page: current_page,
           per_page: per_page
         }.delete_if { |key, value| value.nil? }
