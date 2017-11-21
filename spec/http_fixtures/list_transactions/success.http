@@ -13,7 +13,11 @@ Content-Type: application/json; charset=utf-8
       "currency": "EUR",
       "local_currency": "EUR",
       "label": "Qonto",
-      "settled_at": "2017-09-11T08:38:37.000Z"
+      "settled_at": "2017-09-11T08:38:37.000Z",
+      "emitted_at": "2017-09-11T08:38:37.000Z",
+      "transaction_id": "aaa001",
+      "status": "pending",
+      "note": "This is a transaction note"
     }
   ]
 }
