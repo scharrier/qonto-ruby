@@ -11,7 +11,9 @@ Content-Type: application/json; charset=utf-8
         "bic": "TRZOFRXXXXX",
         "currency": "EUR",
         "balance": 42000.00,
-        "balance_cents": 4200000
+        "balance_cents": 4200000,
+        "authorized_balance": 100.00,
+        "authorized_balance_cents": 10000
       }
     ]
   }
