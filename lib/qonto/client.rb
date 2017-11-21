@@ -21,17 +21,17 @@ module Qonto
       "#{BASE_URL}#{API_VERSION}"
     end
 
-    def get(path)
-      execute :get, path
+    def get(path, options = {})
+      execute(:get, path, options)
     end
 
     private
 
     attr_reader :slug, :secret_key
 
-    def execute(method, path)
+    def execute(method, path, options)
       begin
-        response = request(method, path)
+        response = request(method, path, options)
       rescue *Error::NET_HTTP_ERRORS => err
         raise ConnectionError.new, err.message
       end
@@ -54,8 +54,8 @@ module Qonto
       end
     end
 
-    def request(method, path)
-      HTTParty.send(method, base_url + path, base_options)
+    def request(method, path, options)
+      HTTParty.send(method, base_url + path, base_options.merge(options))
     end
 
     def base_options
