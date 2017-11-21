@@ -8,7 +8,7 @@ module Qonto
     include Qonto::Actions::Organization
     include Qonto::Actions::Transactions
 
-    API_VERSION = 'v1'.freeze
+    API_VERSION = 'v2'.freeze
     BASE_URL = 'https://thirdparty.qonto.eu/'.freeze
     USER_AGENT = "qonto-ruby/#{VERSION}".freeze
 

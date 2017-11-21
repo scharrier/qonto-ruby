@@ -10,7 +10,7 @@ describe Qonto::Client do
 
       expect(WebMock).to have_requested(
         :get,
-        'https://thirdparty.qonto.eu/v1/success'
+        'https://thirdparty.qonto.eu/v2/success'
       ).with(headers: {
         'Accept' => 'application/json',
         'Authorization' => 'it-ducks:123',
@@ -42,7 +42,7 @@ describe Qonto::Client do
 
       expect(WebMock).to have_requested(
         :get,
-        'https://thirdparty.qonto.eu/v1/organizations/it-ducks'
+        'https://thirdparty.qonto.eu/v2/organizations/it-ducks'
       )
     end
 
@@ -69,7 +69,7 @@ describe Qonto::Client do
 
       expect(WebMock).to have_requested(
         :get,
-        'https://thirdparty.qonto.eu/v1/transactions?iban=123456&slug=my-account'
+        'https://thirdparty.qonto.eu/v2/transactions?iban=123456&slug=my-account'
       )
     end
 
@@ -80,7 +80,7 @@ describe Qonto::Client do
 
       expect(WebMock).to have_requested(
         :get,
-        'https://thirdparty.qonto.eu/v1/transactions?iban=123456&slug=my-account&current_page=2&per_page=5'
+        'https://thirdparty.qonto.eu/v2/transactions?iban=123456&slug=my-account&current_page=2&per_page=5'
       )
     end
 
