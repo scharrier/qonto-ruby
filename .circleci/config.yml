@@ -49,6 +49,7 @@ workflows:
   build:
     jobs:
       - build-latest
+      - build-2-4
       - build-2-3
       - build-2-2
       - build-2-1
