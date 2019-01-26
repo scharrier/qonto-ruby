@@ -17,7 +17,10 @@ Content-Type: application/json; charset=utf-8
       "emitted_at": "2017-09-11T08:38:37.000Z",
       "transaction_id": "aaa001",
       "status": "pending",
-      "note": "This is a transaction note"
+      "note": "This is a transaction note",
+      "vat_amount": 0.04,
+      "vat_amount_cents": 4,
+      "vat_rate": 10
     }
   ]
 }
