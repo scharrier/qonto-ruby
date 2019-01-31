@@ -102,6 +102,23 @@ describe Qonto::Client do
       response = client.list_transactions(bank_account: account)
 
       expect(response.first).to be_a(Qonto::Model::Transaction)
+      expect(response.first.amount).to eq(0.42)
+      expect(response.first.amount_cents).to eq(42)
+      expect(response.first.local_amount).to eq(0)
+      expect(response.first.local_amount_cents).to eq(0)
+      expect(response.first.side).to eq('debit')
+      expect(response.first.operation_type).to eq('qonto_fee')
+      expect(response.first.currency).to eq('EUR')
+      expect(response.first.local_currency).to eq('EUR')
+      expect(response.first.label).to eq('Qonto')
+      expect(response.first.settled_at).to eq('2017-09-11T08:38:37.000Z')
+      expect(response.first.emitted_at).to eq('2017-09-11T08:38:37.000Z')
+      expect(response.first.transaction_id).to eq('aaa001')
+      expect(response.first.status).to eq('pending')
+      expect(response.first.note).to eq('This is a transaction note')
+      expect(response.first.vat_amount).to eq(0.04)
+      expect(response.first.vat_amount_cents).to eq(4)
+      expect(response.first.vat_rate).to eq(10)
     end
   end
 end
